@@ -1,0 +1,50 @@
+button {
+  padding: 20px 20px;
+  margin: 2%;
+  background-color: white;
+  cursor: pointer;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 15px;
+  color: black;
+  transition: ease 100ms;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 300ms;
+}
+
+button::after {
+  position: absolute;
+  left: -100%;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  transition: all ease 500ms;
+  z-index: 0;
+}
+
+button:hover::after {
+  bottom: 0;
+  left: 0;
+}
+
+button:hover {
+  color: white;
+}
+
+button .fa-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.icon-sidebar {
+  z-index: 1;
+}
+
+button p {
+  z-index: 100;
+}

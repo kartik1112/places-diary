@@ -1,0 +1,40 @@
+.sidebar-container {
+  position: relative;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.sidebar-section {
+  position: absolute;
+  top: 12%;
+  right: -100%;
+  width: 0;
+  height: 85%;
+  transition: all 700ms ease;
+}
+
+.sidebar-section.active {
+  position: absolute;
+  top: 12%;
+  right: 0;
+  width: 100%;
+  height: 85%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgb(38, 57, 77) 0px 5px 20px -10px;
+}
+
+.pin-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+

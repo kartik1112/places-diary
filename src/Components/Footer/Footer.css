@@ -1,6 +1,16 @@
-footer {
+/* footer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
+} */
+
+
+footer {
+  background-color: #969696;
+  padding: 1rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+

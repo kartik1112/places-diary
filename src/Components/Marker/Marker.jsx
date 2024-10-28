@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { capitalize, getAddress } from "../../utils/utils";
 import { removePlace } from "../../features/places/PlacesSlice";
+import GenericButton from "../GenericButton/GenericButton";
+import { setClickable } from "../../features/mapClickable/mapClickableSlice";
 
-const MarkedLocation = ({ pin, index, setClickable }) => {
+
+const MarkedLocation = ({ pin, index }) => {
   const pins = useSelector((state) => state.places.value);
+  // const clickable = useSelector((state) => state.clickable.value);
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
 
@@ -19,9 +23,9 @@ const MarkedLocation = ({ pin, index, setClickable }) => {
   }, [pins, index]);
 
   const handleRemove = () => {
-    setClickable(false);
+    dispatch(setClickable(false));
     dispatch(removePlace(pins[index].id));
-    setTimeout(() => setClickable(true), 100); 
+    setTimeout(() => dispatch(setClickable(true)), 100); 
   };
 
   return (
@@ -32,7 +36,7 @@ const MarkedLocation = ({ pin, index, setClickable }) => {
         <p>
           Address: <span>{address}</span>
         </p>
-        <button onClick={handleRemove}>Remove</button>
+        <GenericButton text={"Remove"} onClick={handleRemove}></GenericButton>
       </Popup>
     </Marker>
   );

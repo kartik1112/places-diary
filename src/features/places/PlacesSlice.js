@@ -10,9 +10,7 @@ export const placesSlice = createSlice({
     addPlace: (state, action) => {
       state.value.push({ id: counter++, ...action.payload });
     },
-    removePlace: (state, action) => {
-      console.log(action.payload);
-      
+    removePlace: (state, action) => {      
       state.value = state.value.filter(
         (place) => place.id !== action.payload
       );

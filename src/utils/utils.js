@@ -3,8 +3,6 @@ export function capitalize(val) {
 }
 
 export async function getAddress(lat, lng) {
-    console.log(lat, lng);
-    
   const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
   try {
     const response = await fetch(url);
@@ -12,6 +10,7 @@ export async function getAddress(lat, lng) {
       throw new Error("Address can not be found");
     }
     const data = await response.json();
+    console.log(data)
     return data.display_name;
   } catch (error) {
     console.error("Error fetching address:", error);

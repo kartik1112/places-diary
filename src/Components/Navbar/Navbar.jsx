@@ -3,7 +3,7 @@ import '../Navbar/Navbar.css'
 const Navbar = () => {
   return (
     <nav>
-      <img src="" alt="MAP-Pin" />
+      <img src="" alt="Places-Diary" />
       <ul>
         <li>
           <a href="https://devkartik.me">About</a>

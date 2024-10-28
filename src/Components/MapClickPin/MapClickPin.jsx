@@ -6,9 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPlace } from "../../features/places/PlacesSlice";
 import Modal from "../Modal/Modal";
 import "./MapClickPin.css";
+import GenericButton from "../GenericButton/GenericButton";
+import {
+  setClickable,
+  toggleClickable,
+} from "../../features/mapClickable/mapClickableSlice";
 
 const MapClickPin = () => {
   const pins = useSelector((state) => state.places.value);
+  const clickable = useSelector((state) => state.clickable.value);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [newPlace, setNewPlace] = useState({
@@ -16,7 +22,7 @@ const MapClickPin = () => {
     lng: null,
     remark: "",
   });
-  const [clickable, setClickable] = useState(true);
+  // const [clickable, setClickable] = useState(true);
 
   const map = useMapEvents({
     click: (event) => {
@@ -24,7 +30,7 @@ const MapClickPin = () => {
       const { lat, lng } = event.latlng;
       setNewPlace({ lat, lng, remark: "" });
       setShowModal(true);
-      setClickable(false);
+      dispatch(setClickable(false));
     },
   });
 
@@ -32,8 +38,8 @@ const MapClickPin = () => {
     dispatch(
       addPlace({ coordinates: [place.lat, place.lng], remark: place.remark })
     );
+    dispatch(toggleClickable());
     setShowModal(false);
-    setClickable(true);
   };
 
   return (
@@ -42,13 +48,18 @@ const MapClickPin = () => {
         <MarkedLocation
           key={index}
           setShowModal={setShowModal}
-          setClickable={setClickable}
           pin={pin.coordinates}
           index={index}
         />
       ))}
       {showModal && (
-        <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <Modal
+          show={showModal}
+          onClose={() => {
+            setShowModal(false);
+            dispatch(setClickable(true));
+          }}
+        >
           <div style={{ height: "90%" }}>
             <h2>Add Your Memory</h2>
             <form
@@ -69,7 +80,7 @@ const MapClickPin = () => {
                   required
                 />
               </label>
-              <button type="submit">Add Place</button>
+              <GenericButton text={"Add Place"} type="submit"></GenericButton>
             </form>
           </div>
         </Modal>
