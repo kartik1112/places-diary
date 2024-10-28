@@ -12,7 +12,7 @@ function App() {
       <main>
         <div className="search-section">
           <input type="text" placeholder="Search Location" />
-        </div>{" "}
+        </div>
         <MapContainer
           className="map-container"
           center={[26.82167691666667, 75.84574525000002]}
@@ -23,12 +23,6 @@ function App() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MapClickPin />
-          <div
-            className="overlay-model-popup"
-            onClick={() => {
-              console.log("ok");
-            }}
-          ></div>
         </MapContainer>
       </main>
       <Footer />
