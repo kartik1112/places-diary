@@ -6,7 +6,8 @@ import { capitalize, getAddress } from "../../utils/utils";
 import { removePlace } from "../../features/places/PlacesSlice";
 import GenericButton from "../GenericButton/GenericButton";
 import { setClickable } from "../../features/mapClickable/mapClickableSlice";
-
+// import pinSvg from 'pin.svg';
+import L from "leaflet";
 
 const MarkedLocation = ({ pin, index }) => {
   const pins = useSelector((state) => state.places.value);
@@ -22,6 +23,14 @@ const MarkedLocation = ({ pin, index }) => {
     );
   }, [pins, index]);
 
+  const icon = new L.Icon({
+    iconUrl: "/pin.svg", // Ensure this path is correct
+    iconSize: [35, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+
   const handleRemove = () => {
     dispatch(setClickable(false));
     dispatch(removePlace(pins[index].id));
@@ -29,7 +38,7 @@ const MarkedLocation = ({ pin, index }) => {
   };
 
   return (
-    <Marker className="marker" key={index} position={pin} draggable={true}>
+    <Marker className="marker" key={index} position={pin} draggable={true} icon={icon}>
       <Popup>
         <h2>Remarks</h2>
         <p>{capitalize(pins[index].remark)}</p>
