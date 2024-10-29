@@ -3,7 +3,7 @@ import "../Footer/Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>Made with ❤️ Kartik</p>
+      <p>Places Diary 📖</p>
     </footer>
   );
 };

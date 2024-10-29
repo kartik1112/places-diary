@@ -36,7 +36,7 @@ const MarkedLocation = ({ pin, index }) => {
         <p>
           Address: <span>{address}</span>
         </p>
-        <GenericButton text={"Remove"} onClick={handleRemove}></GenericButton>
+        <GenericButton text={"Remove"} style={{padding:"0% 10%"}}  onClick={handleRemove}></GenericButton>
       </Popup>
     </Marker>
   );

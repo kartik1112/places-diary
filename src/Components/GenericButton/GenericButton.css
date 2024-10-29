@@ -2,6 +2,7 @@ button {
   padding: 20px 20px;
   margin: 2%;
   background-color: white;
+  gap: 10px;
   cursor: pointer;
   border-width: 1px;
   border-color: black;

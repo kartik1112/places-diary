@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMapEvents } from "react-leaflet";
 import MarkedLocation from "../Marker/Marker";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,6 @@ const MapClickPin = () => {
     lng: null,
     remark: "",
   });
-  // const [clickable, setClickable] = useState(true);
 
   const map = useMapEvents({
     click: (event) => {

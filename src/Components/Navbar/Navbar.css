@@ -7,6 +7,11 @@ nav {
   align-items: center;
 }
 
+nav img{
+  width: 50px;
+  height: 40px;
+}
+
 
 nav ul {
   list-style: none;
@@ -35,7 +40,7 @@ nav ul li a::after {
   content: "";
   height: 100%;
   width: 100%;
-  background-color: orangered;
+  background-color: black;
   transition: all ease 500ms;
   z-index: 0;
 }
